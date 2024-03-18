@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{articulo.titulo}}</h1>
+    <p>Autor: {{articulo.autor}}</p>
+    <p>Contenido: {{articulo.contenido}}</p>
+    <p>Categoria: {{articulo.categoria}}</p>
+    <p>Creado: {{articulo.creado | date('Y-m-d H:i:s')}}</p>
+{% endblock %}

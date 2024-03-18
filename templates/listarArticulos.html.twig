@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Listado de articulos</h1>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Titulo</th>
+        <th>Autor</th>
+        <th>Contenido</th>
+        <th>Categoria</th>
+        <th>Fecha</th>
+    </tr>
+    {% for articulo in articulos %}
+        <tr>
+            <td> {{ articulo.id }} </td>
+            <td> {{ articulo.titulo }} </td>
+            <td> {{ articulo.autor }} </td>
+            <td> {{ articulo.contenido }} </td>
+            <td> {{ articulo.categoria }} </td>
+            <td>{{ articulo.creado | date('Y-m-d H:i:s') }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
