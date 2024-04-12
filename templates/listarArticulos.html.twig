@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/listar_articulos.css') }}">
+{% endblock %}
+
 {% block body %}
-<h1>Listado de articulos</h1>
+<h1 class="titulo_pagina">Listado de articulos</h1>
 <table border="1">
     <tr>
         <th>Id</th>
@@ -14,12 +20,23 @@
     {% for articulo in articulos %}
         <tr>
             <td> {{ articulo.id }} </td>
-            <td> {{ articulo.titulo }} </td>
+            <td>
+                <a
+                    href="{{ path('mostrar_articulo', {'id': articulo.id}) }}"
+                > {{ articulo.titulo }} </a>
+            </td>
             <td> {{ articulo.autor }} </td>
             <td> {{ articulo.contenido }} </td>
             <td> {{ articulo.categoria }} </td>
             <td>{{ articulo.creado | date('Y-m-d H:i:s') }}</td>
+            <td>
+                <a
+                    href="{{ path('eliminar_articulo', {'id': articulo.id}) }}"
+                >Eliminar</a>
+            </td>
         </tr>
     {% endfor %}
 </table>
+<!-- Boton para crear un nuevo articulo -->
+<button onclick="window.location.href='{{ path('crear_articulo') }}'">Crear articulo</button>
 {% endblock %}

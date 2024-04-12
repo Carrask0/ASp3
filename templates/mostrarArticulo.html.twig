@@ -6,4 +6,20 @@
     <p>Contenido: {{articulo.contenido}}</p>
     <p>Categoria: {{articulo.categoria}}</p>
     <p>Creado: {{articulo.creado | date('Y-m-d H:i:s')}}</p>
+
+    <!-- Listado de comentarios -->
+    <h2>Comentarios</h2>
+    <ul>
+        {% for comentario in comentarios %}
+            <li>
+                <h3>Autor {{loop.index}}</h3>
+                <p>{{comentario.autor}}</p>
+                <h3>Contenido</h3>
+                <p>{{comentario.contenido}}</p>
+                <h3>Respuesta</h3>
+                <p>{{comentario.respuesta}}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <button onclick="window.location.href='{{ path('crear_comentario', {'id': articulo.id}) }}'">Crear comentario</button>
 {% endblock %}
